@@ -56,10 +56,12 @@ public class Register extends HttpServlet {
                                   
                                    Statement stmt = con.createStatement();  
                                   stmt.executeUpdate("INSERT into users(username, password, email, About,avatar,privilege,secretquestion,secret) values ('"+user+"','"+pass+"','"+email+"','"+about+"','default.jpg','user',1,'"+secret+"')");
-                                       stmt.executeUpdate("INSERT into UserMessages(recipient, sender, subject, msg) values ('"+user+"','admin','Hi','Hi<br/> This is admin of this page. <br/> Welcome to Our Forum')");
-             
+                                       stmt.executeUpdate("INSERT into UserMessages(recipient, sender, subject, msg) values ('\"+user+\"','admin','Hi','Hi<br/> This is admin of this page. <br/> Welcome to Our Forum')");
+//                                       ? instead of "+user"
+//                                       stmt.setString(1, user);
+
                                     response.sendRedirect("index.jsp");
-                                    
+
                                }
                     else
                     {
